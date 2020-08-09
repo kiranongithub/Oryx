@@ -21,4 +21,9 @@ ARG AI_KEY
 ENV ORYX_AI_INSTRUMENTATION_KEY=${AI_KEY}
 
 COPY --from=startupCmdGen /opt/startupcmdgen/startupcmdgen /opt/startupcmdgen/startupcmdgen
-RUN ln -s /opt/startupcmdgen/startupcmdgen /usr/local/bin/oryx
+RUN ln -s /opt/startupcmdgen/startupcmdgen /usr/local/bin/oryx \
+    # To upgrade any MSSQL related packages
+    && apt-get update \
+    && ACCEPT_EULA=Y \
+    DEBIAN_FRONTEND=noninteractive \
+    apt-get upgrade --assume-yes
