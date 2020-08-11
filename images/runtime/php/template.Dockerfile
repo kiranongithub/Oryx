@@ -24,10 +24,4 @@ COPY --from=startupCmdGen /opt/startupcmdgen/startupcmdgen /opt/startupcmdgen/st
 RUN ln -s /opt/startupcmdgen/startupcmdgen /usr/local/bin/oryx \
     && rm -rf /tmp/oryx \
     # Temporarily making sure apache2-foreground has permission
-    && chmod +x /usr/local/bin/apache2-foreground \
-    # To upgrade any MSSQL related packages
-    && apt-get update \
-    && ACCEPT_EULA=Y \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get upgrade --assume-yes \
-    && rm -rf /var/lib/apt/lists/*
+    && chmod +x /usr/local/bin/apache2-foreground
