@@ -26,6 +26,8 @@ RUN apt-get update \
         lldb \
         curl \
         file \
+        libgdiplus \
+    && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure web servers to bind to port 80 when present
@@ -56,10 +58,5 @@ RUN set -ex \
     && rm aspnetcore.tar.gz
 
 RUN dotnet-sos install
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libgdiplus \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN rm -rf ${BUILD_DIR}
