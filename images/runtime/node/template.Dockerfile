@@ -27,4 +27,5 @@ COPY src/startupscriptgenerator/src/node/wrapper/node /opt/node-wrapper/
 RUN ln -s /opt/startupcmdgen/startupcmdgen /usr/local/bin/oryx \
     && chmod a+x /opt/node-wrapper/node \
     && apt-get update \
-    && apt-get upgrade --assume-yes
+    && apt-get upgrade --assume-yes \
+    && rm -rf /var/lib/apt/lists/*

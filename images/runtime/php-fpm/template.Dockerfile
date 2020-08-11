@@ -26,4 +26,6 @@ RUN ln -s /opt/startupcmdgen/startupcmdgen /usr/local/bin/oryx \
     && apt-get update \
     && ACCEPT_EULA=Y \
     DEBIAN_FRONTEND=noninteractive \
-    apt-get upgrade --assume-yes
+    apt-get upgrade --assume-yes \
+    && rm -rf /var/lib/apt/lists/*
+
